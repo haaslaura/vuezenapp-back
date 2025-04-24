@@ -16,13 +16,14 @@ This server acts as a relay between [the VueZen application](https://github.com/
 
 1. Clone this folder.
 
-2.Install the dependencies :
+2. Install the dependencies :
 
 `npm install`
 
 3. Create an .env file at the root of the project :
 
-```DEEPL_API_KEY=la_cle_api_ici
+```bash
+DEEPL_API_KEY=la_cle_api_ici
 PORT=3000
 ```
 
