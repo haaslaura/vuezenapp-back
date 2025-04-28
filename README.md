@@ -7,7 +7,7 @@ Mini Express proxy server to enable the VueZen application (frontend) to access 
 The DeepL API cannot be called directly from the browser because of the CORS policy.
 This server acts as a relay between [the VueZen application](https://github.com/haaslaura/vuezenapp) and DeepL.
 
-## ⚙️ Prérequis
+## ⚙️ Prerequisites
 
 - Node.js
 - A free API key DeepL (https://www.deepl.com/fr/pro)
