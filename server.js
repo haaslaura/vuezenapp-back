@@ -6,7 +6,8 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 const app = express()
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 4001
+const API_URL = process.env.API_URL || 'https://api.vuezenapp.laura-haas.dev'
 
 app.use(cors())
 app.use(express.urlencoded({ extended: true }))
@@ -40,5 +41,5 @@ app.post('/api/translate', async (req, res) => {
 })
 
 app.listen(PORT, () => {
-    console.log(`✅ Serveur proxy DeepL lancé sur http://localhost:${PORT}`)
+    console.log(`✅ Serveur proxy DeepL lancé sur ${API_URL}:${PORT}`)
 })
