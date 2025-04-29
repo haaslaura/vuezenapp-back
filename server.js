@@ -6,12 +6,18 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 const app = express()
-const PORT = process.env.PORT || 4001
-const API_URL = process.env.API_URL || 'https://api.vuezenapp.laura-haas.dev'
+const PORT = process.env.PORT
+const API_URL = process.env.API_URL || 'http://localhost'
 
-app.use(cors())
+app.use(cors({
+    origin: "https://vuezenapp.laura-haas.dev",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"]
+}));
+
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+
 
 app.post('/api/translate', async (req, res) => {
     const { text } = req.body
