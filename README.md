@@ -1,6 +1,6 @@
 # 🌿 VueZenApp-back
 
-Mini Express proxy server to enable the VueZen application (frontend) to access the DeepL API without CORS blocking.
+Mini Express proxy server to enable the VueZen application (frontend) to access the Quote and the DeepL API without CORS blocking.
 
 ## 🚀 Objectif
 
@@ -24,9 +24,15 @@ This server acts as a relay between [the VueZen application](https://github.com/
 
 ```bash
 DEEPL_API_KEY=la_cle_api_ici
-PORT=3000
+PORT=4002
 ```
 
 4. Launch the server
 
 `npm run server`
+
+## 🔔 Update
+
+### Updated on 06/05/2025
+
+The server now makes the call to the citation API directly. The translated citation and the author's name are uploaded to the front-end at the same time.
