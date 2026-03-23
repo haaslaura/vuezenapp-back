@@ -9,7 +9,7 @@ const app = express()
 const PORT = process.env.PORT
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "https://vuezenapp.laura-haas.dev",
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"]
 }));
