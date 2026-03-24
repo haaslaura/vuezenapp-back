@@ -10,7 +10,7 @@ This server acts as a relay between [the VueZen application](https://github.com/
 ## ⚙️ Prerequisites
 
 - Node.js
-- A free API key DeepL (https://www.deepl.com/fr/pro)
+- A free API key DeepL (https://developers.deepl.com/api-reference/translate)
 
 ## 📦 Installation
 
@@ -23,8 +23,8 @@ This server acts as a relay between [the VueZen application](https://github.com/
 3. Create an .env file at the root of the project :
 
 ```bash
-DEEPL_API_KEY=la_cle_api_ici
-PORT=4002
+DEEPL_API_KEY=your_api_key_here
+PORT=your_port_number
 ```
 
 4. Launch the server
@@ -32,6 +32,10 @@ PORT=4002
 `npm run server`
 
 ## 🔔 Update
+
+### Updated on 24/03/2026
+
+The DeepL API has been updated. The main recommended change is authentication via the Authorization header: DeepL-Auth-Key <api-key> + JSON body. The API also includes additional parameters and responses. We recommend consulting the documentation after cloning this repository. (https://developers.deepl.com/api-reference/translate).
 
 ### Updated on 06/05/2025
 

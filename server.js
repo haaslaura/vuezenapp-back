@@ -1,21 +1,22 @@
-const express = require('express')
-const cors = require('cors')
-const axios = require('axios')
-const dotenv = require('dotenv')
+const express = require('express');
+const cors = require('cors');
+const axios = require('axios');
+const dotenv = require('dotenv');
 
-dotenv.config()
+dotenv.config();
 
-const app = express()
-const PORT = process.env.PORT
+const app = express();
+const PORT = process.env.PORT;
+const FRONTEND_URL = process.env.FRONTEND_URL;
 
 app.use(cors({
-    origin: "https://vuezenapp.laura-haas.dev",
+    origin: FRONTEND_URL,
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"]
 }));
 
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 
 app.get('/api/translate', async (req, res) => {
@@ -26,16 +27,18 @@ app.get('/api/translate', async (req, res) => {
         const quoteRes = await axios.get('https://zenquotes.io/api/random');
         const originalQuote = quoteRes.data[0].q;
 
-        // Step 2: Translate the quote into English at DeepL
+        // Step 2: Translate the quote into French at DeepL
         const deeplRes = await axios.post(
             'https://api-free.deepl.com/v2/translate',
-            new URLSearchParams({
-                auth_key: process.env.DEEPL_API_KEY,
-                text: originalQuote,
-                target_lang: 'FR',
-            }),
             {
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                text: [originalQuote],
+                target_lang: 'FR',
+            },
+            {
+                headers: {
+                    Authorization: `DeepL-Auth-Key ${process.env.DEEPL_API_KEY}`,
+                    'Content-Type': 'application/json',
+                },
             }
         )
 
@@ -51,8 +54,8 @@ app.get('/api/translate', async (req, res) => {
         console.error('Erreur lors de la récupération ou la traduction :', error.response?.data || error.message || error)
         res.status(500).json({ error: "Une erreur est survenue." });
     }
-})
+});
 
 app.listen(PORT, () => {
     console.log(`✅ Serveur proxy DeepL lancé sur http://localhost:${PORT}`)
-})
+});
